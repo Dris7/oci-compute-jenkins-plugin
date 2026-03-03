@@ -90,6 +90,9 @@ public class BaremetalCloudInstanceMonitorUnitTest {
             oneOf(client).getInstanceState("in");
             will(throwException(new BmcException(404, "NotAuthorizedOrNotFound",
                     "instance not found", "opc-request-id")));
+            oneOf(client).terminateInstance("in");
+            will(throwException(new BmcException(404, "NotAuthorizedOrNotFound",
+                    "instance not found", "opc-request-id")));
         }});
         TestBaremetalCloudAgent agent = new TestBaremetalCloudAgent.Builder()
                 .instanceId("in")
